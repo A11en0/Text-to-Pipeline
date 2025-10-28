@@ -1,0 +1,211 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [        
+        {
+            "name": "IMACS",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config", "config/default_config.yaml",
+                "--n_tasks", "100",
+                "--complexity", "8",
+                "--timeout", "3000",
+                "--auto_report"
+            ],
+        },
+        {
+            "name": "webtables",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/data/webtables.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "benchmark_report",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "analysis/src/scripts/benchmark_report.py",
+            "args": [
+                //"--benchmark-id", "1",
+                // "--keep-running",
+                //"--benchmark-dir", "datas/benchmark_20250429_150813",
+                "--benchmark-file", "output/benchmark/benchmark_20250512_221300/benchmark.json",
+                "--serve"
+            ]
+        },
+        {
+            "name": "reasoning",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/scripts/reasoning.py",
+            "args": [
+                "--debug",
+                "--benchmark_subdir", "test_clean",
+                "--use_cache",
+                "--model", "gemini-2.5-pro",
+            ],
+        },
+        {
+            "name": "run_pandas",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/nl2pandas/run_pandas.py",
+            "args": [
+                "--data_dir", "output/benchmark/benchmark_20250430_000809",
+                "--num_tasks", "100"
+            ],
+        },
+        {
+            "name": "run_agent",
+            "type": "debugpy",
+            "request": "launch",
+            "justMyCode": false,
+            "program": "src/baseline/gpt_agent/run_agent.py",
+            "args": [
+                "--data_dir", "datas/benchmark_20250430_000809",
+                "--model", "gpt-4o-mini",
+                "--task_ids", "8ba70deb"
+            ],
+        }, 
+        {
+            "name": "test_pandas_samples",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/test_pandas_samples.py",
+            "args": [
+                "--samples_dir", "pandas_samples"
+            ],
+        },
+        {
+            "name": "list_benchmarks",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "analysis/src/scripts/list_benchmarks.py",
+            "args": [
+                "--db_path", "benchmark.db"
+            ],
+        },
+        {
+            "name": "error_analysis",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "analysis/src/scripts/error_analysis.py",
+            "args": [
+                "--benchmark_subdir", "benchmark_20250425_015909"
+            ],
+        },
+        {
+            "name": "idts_to_spider",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/scripts/idts_to_spider.py",
+            "args": [
+                "--idts_db", "output/text_to_sql.db",
+                "--output_dir", "output/spider_format", 
+                "--split", "train"
+            ],
+        },
+        {
+            "name": "benchmark_to_spider",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/scripts/benchmark_to_spider.py",
+            "args": [
+                "--benchmark", "datas/benchmark/benchmark_20250425_015909/benchmark_with_sql.json",
+                "--output", "datas/benchmark/benchmark_20250425_015909/database"
+            ],
+        },
+        {
+            "name": "add_sql_to_benchmark",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/scripts/add_sql_to_benchmark.py",
+            "args": [
+                "datas/benchmark/benchmark_20250428_015149/benchmark.json", 
+                "datas/benchmark/benchmark_20250428_015149/benchmark_with_sql.json"
+            ],
+        },
+        {
+            "name": "test_sql_queries",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/scripts/test_sql_queries.py",
+            "args": [
+                "--gold_sql", "datas/benchmark_20250430_000809/database/test_gold.sql", 
+                "--spider_dir", "datas/benchmark_20250430_000809/database/database", 
+                "--output", "datas/benchmark_20250430_000809/database_test_results.json"
+            ]
+        },
+        {
+            "name": "nl2sql_baseline",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/nl2sql/run.py",
+            "args": [
+                "--model", "gpt-4o-mini",
+                "--dataset_path", "datas/benchmark/benchmark_20250425_015909",
+                "--use_test_suite",
+                "--sample_size", "50000"
+            ]
+        },
+        {
+            "name": "generate_latex_tables",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "analysis/src/scripts/generate_latex_tables.py",
+            "args": [
+                "--benchmark_subdir", "benchmark_20250425_015909"
+            ]
+        },
+        {
+            "name": "run_t2p",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/multicot/run_t2p.py",
+            "args": [
+                "--data_dir", "datas/benchmark/benchmark_20250428_015149/",
+                "--model", "deepseek-v3", "--max_steps", "3"
+            ]
+        },
+        {
+            "name": "run_chain_of_tables",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/chain_of_tables/run_reasoning.py",
+            "args": [
+                "--benchmark_subdir", "benchmark_20250430_000809_copy/",
+                "--model", "gpt-4o-mini",
+            ]
+        },
+        {
+            "name": "run_inference",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/fine_tuning/run_inference.py",
+            "args": [
+                "--benchmark_subdir", "benchmark_20250430_000809",
+                "--debug",
+                "--model_path", "/pretrain/Qwen2.5-Coder-1.5B-Instruct"
+            ]
+        },
+        {
+            "name": "run_train",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/baseline/fine_tuning/run_text_to_pipeline_sft.py",
+            "args": [
+                "--train_path", "funtuneData/train.json",
+                "--eval_path", "funtuneData/dev.json",
+                "--model_name_or_path", "/pretrain/Qwen2.5-Coder-1.5B-Instruct",
+                "--use_peft",
+                "--fp16",
+                "--output_dir","funtuneData/"
+            ]
+        }
+    ]
+}

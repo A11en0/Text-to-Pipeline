@@ -1,6 +1,8 @@
 
 # Text-to-Pipeline: Bridging Natural Language and Data Preparation Pipelines
 
+The full version paper is available for [here](Text_to_Pipeline_full_version).
+
 This repository is the official implementation of "**Text-to-Pipeline: Bridging Natural Language and Data Preparation Pipelines**"
 
   Data preparation (DP) transforms raw data into a form suitable for downstream applications, typically by composing operations into executable pipelines. Building such pipelines is time-consuming and requires sophisticated programming skills, posing a significant barrier for non-experts. To lower this barrier, we introduce Text-to-Pipeline, a new task that translates NL data preparation instructions into DP pipelines, and PARROT, a large-scale benchmark to support systematic evaluation. To ensure realistic DP scenarios, PARROT is built by mining transformation patterns from production pipelines and instantiating them on 23,009 real-world tables, resulting in ~18,000 tasks spanning 16 core operators. Our empirical evaluation on PARROT reveals a critical failure mode in cutting-edge LLMs: they struggle not only with multi-step compositional logic but also with semantic parameter grounding. We thus establish a strong baseline with Pipeline-Agent, an execution-aware agent that iteratively reflects on intermediate states. While it achieves state-of-the-art performance, a significant gap remains, underscoring the deep, unsolved challenges for PARROT. It provides the essential, large-scale testbed for developing and evaluating the next generation of autonomous data preparation agentic systems.

@@ -1,7 +1,7 @@
 
 # Text-to-Pipeline: Bridging Natural Language and Data Preparation Pipelines
 
-The full version paper is available for [here](Text_to_Pipeline_full_version).
+The full version paper is available for [here](Text_to_Pipeline_full_version.pdf).
 
 This repository is the official implementation of "**Text-to-Pipeline: Bridging Natural Language and Data Preparation Pipelines**"
 
